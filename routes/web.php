@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,7 @@ Route::get('/pasien/tambah/', 'PasienController@tambah_pasien')->name('pasien.ta
 
 Route::post('/pasien/tambah/simpan', 'PasienController@simpan_pasien')->name('pasien.simpan')->middleware('auth');
 
-Route::post('/pasien/edit/update/', 'PasienController@update_pasien')->middleware('auth');
+Route::post('/pasien/edit/update/', 'PasienController@update_pasien')->name('pasien.update')->middleware('auth');
 
 Route::delete('/pasien/hapus/{id}','PasienController@hapus_pasien')->name('pasien.destroy')->middleware('auth');
 
@@ -111,7 +112,7 @@ Route::get('users/profile', 'ProfileController@index')->name('profile.edit')->mi
 
 Route::get('users/profile/{id}', 'ProfileController@edit')->name('profile.edit.admin')->middleware('auth','admin');
 
-Route::patch('users/profile/simpan', 'ProfileController@simpan')->name('profile.simpan')->middleware('auth');\
+Route::patch('users/profile/simpan', 'ProfileController@simpan')->name('profile.simpan')->middleware('auth');
 //endProfile
 
 //Users

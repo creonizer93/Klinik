@@ -309,6 +309,10 @@ class RMController extends Controller
                     $buka=route('rm.tambah.id',$request->idpasien);;
                     $pesan='Data Rekam Medis berhasil disimpan!';
                 break;
+                case 'simpan_tagihan':
+                    $buka=route('tagihan',$ids->id);
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;
             }
        
          return redirect($buka)->with('pesan',$pesan);
