@@ -264,7 +264,7 @@ class RMController extends Controller
             $resep_dosis = "";
         }
         $newresep = array();
-        $oldresep=array();
+        $oldresep=array_combine(encode(get_value('rm',$request->id,'resep')),encode(get_value('rm',$request->id,'jumlah')));
         foreach ($request->resep as $resep){
             $newresep[$resep['id']] = $resep['jumlah'];
             
@@ -307,6 +307,10 @@ class RMController extends Controller
                 break;             
                 case 'simpan_baru': 
                     $buka=route('rm.tambah.id',$request->idpasien);;
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;
+                case 'simpan_tagihan':
+                    $buka=route('tagihan',$ids->id);
                     $pesan='Data Rekam Medis berhasil disimpan!';
                 break;
             }

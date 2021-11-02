@@ -1,8 +1,10 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
     
     function hitung_usia($tgl_lhr) {
         $tglskrg =Carbon::now();
