@@ -203,7 +203,7 @@
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">
                 <table width="75%" id="reseps">
-                  @if ($data->resep != null)
+                  @if ($data->resep != 0)
                     @for ($i = 0; $i < $num['resep']; $i++)
                       <tr>
                         <td><input type="hidden" name="resep[{{ $i }}][id]"
@@ -219,6 +219,8 @@
                         <td><button type="button" class="btn btn-danger remove-pen">Hapus</button></td>
                       </tr>
                     @endfor
+                    @elseif ($data->resep ===0)
+                    <tr>""</tr>
                   @endif
                 </table>
               </div>

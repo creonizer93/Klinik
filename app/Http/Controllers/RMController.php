@@ -53,7 +53,39 @@ class RMController extends Controller
         $lab_id ="";
         $lab_hasil ="";
        }
-
+       if ($request->resep === null){
+        DB::table('rm')->where('id',$request->id)->update([
+            'idpasien' => $request->idpasien,
+            'ku' => $request->keluhan_utama,
+            'anamnesis' => $request->anamnesis,
+            'pxfisik' => $request->px_fisik,
+            'lab' => $lab_id,
+            'hasil' => $lab_hasil,
+            'diagnosis' => $request->diagnosis,
+            'resep' => 'Tanpa Resep',
+            'jumlah' => '',
+            'aturan' => '',
+            'dokter' => $request->dokter,
+            'updated_time' => Carbon::now(),
+        ]);
+        $ids= DB::table('rm')->latest('created_time')->first(); 
+            switch($request->simpan) {
+                case 'simpan_edit': 
+                    $buka=route('rm.edit',$request->id);
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;             
+                case 'simpan_baru': 
+                    $buka=route('rm.tambah.id',$request->idpasien);
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;
+                case 'simpan_tagihan':
+                    $buka=route('tagihan',$ids->id);
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;
+            }
+       
+         return redirect($buka)->with('pesan',$pesan);  
+       }
        // Decoding array input resep
        if (isset($request->resep))
         {
@@ -110,7 +142,7 @@ class RMController extends Controller
             'dokter' => $request->dokter,
             'updated_time' => Carbon::now(),
         ]);
-           
+        $ids= DB::table('rm')->latest('created_time')->first(); 
             switch($request->simpan) {
                 case 'simpan_edit': 
                     $buka=route('rm.edit',$request->id);
@@ -118,6 +150,10 @@ class RMController extends Controller
                 break;             
                 case 'simpan_baru': 
                     $buka=route('rm.tambah.id',$request->idpasien);
+                    $pesan='Data Rekam Medis berhasil disimpan!';
+                break;
+                case 'simpan_tagihan':
+                    $buka=route('tagihan',$ids->id);
                     $pesan='Data Rekam Medis berhasil disimpan!';
                 break;
             }
@@ -162,7 +198,7 @@ class RMController extends Controller
                 $num['resep']=sizeof($data->allresep);
              }
              else {
-                $num['resep']=0;
+                $num['resep']= 0;
              }
         }
         $dokters = DB::table('users')->where('profesi','Dokter')->get();
@@ -242,46 +278,7 @@ class RMController extends Controller
         $lab_hasil ="";
        }
 
-       // Decoding array input resep
-       if (isset($request->resep))
-        {
-            if (has_dupes(array_column($request->resep,'id'))){
-                $errors = new MessageBag(['resep'=>['resep yang sama tidak boleh dimasukan berulang']]);
-                return back()->withErrors($errors);
-            }
-            $this->validate($request, [
-                'resep.*.jumlah' => 'required|numeric|digits_between:1,3',
-                'resep.*.aturan' => 'required',
-            ]);
-            $resep_id = decode('resep','id',$request->resep);
-            $resep_jumlah = decode('resep','jumlah',$request->resep);
-            $resep_dosis = decode('resep','aturan',$request->resep); 
-        }
-        else {
-            $resep_id = "";
-            $resep_jumlah = "";
-            $resep_dosis = "";
-        }
-        $newresep = array();
-        $oldresep=array_combine(encode(get_value('rm',$request->id,'resep')),encode(get_value('rm',$request->id,'jumlah')));
-        foreach ($request->resep as $resep){
-            $newresep[$resep['id']] = $resep['jumlah'];
-            
-        }
-        if (empty($oldresep)) {
-            $resultanresep = resultan_resep($oldresep,$newresep);
-        }
-        else {$resultanresep=$newresep;}
-        $errors = validasi_stok($resultanresep);
-        if ($errors !== NULL) {
-          return  back()->withErrors($errors);
-        }
-  
-        foreach ($resultanresep as $key => $value) {
-            $perintah=kurangi_stok($key,$value);
-            if ($perintah === false) { $habis = array_push($habis,$key); }
-        }
-   
+       if ($request->resep === null){
         DB::table('rm')->insert([
             'idpasien' => $request->idpasien,
             'ku' => $request->keluhan_utama,
@@ -290,9 +287,9 @@ class RMController extends Controller
             'lab' => $lab_id,
             'hasil' => $lab_hasil,
             'diagnosis' => $request->diagnosis,
-            'resep' => $resep_id,
-            'jumlah' => $resep_jumlah,
-            'aturan' => $resep_dosis,
+            'resep' => "Tanpa Resep",
+            'jumlah' => "",
+            'aturan' => "",
             'dokter' => $request->dokter,
             'created_time' => Carbon::now(),
             'updated_time' => Carbon::now(),
@@ -315,7 +312,46 @@ class RMController extends Controller
             }
        
          return redirect($buka)->with('pesan',$pesan);
-         
+       }
+       // Decoding array input resep
+       elseif (isset($request->resep))
+        {
+            if (has_dupes(array_column($request->resep,'id'))){
+                $errors = new MessageBag(['resep'=>['resep yang sama tidak boleh dimasukan berulang']]);
+                return back()->withErrors($errors);
+            }
+            $this->validate($request, [
+                'resep.*.jumlah' => 'required|numeric|digits_between:1,3',
+                'resep.*.aturan' => 'required',
+            ]);
+            $resep_id = decode('resep','id',$request->resep);
+            $resep_jumlah = decode('resep','jumlah',$request->resep);
+            $resep_dosis = decode('resep','aturan',$request->resep); 
+        }
+        else {
+            $resep_id = "0";
+            $resep_jumlah = "0";
+            $resep_dosis = "0";
+        }
+        $newresep = array();
+        $oldresep=array_combine(encode(get_value('rm',$request->id,'resep')),encode(get_value('rm',$request->id,'jumlah')));
+        foreach ($request->resep as $resep){
+            $newresep[$resep['id']] = $resep['jumlah'];
+            
+        }
+        if (empty($oldresep)) {
+            $resultanresep = resultan_resep($oldresep,$newresep);
+        }
+        else {$resultanresep=$newresep;}
+        $errors = validasi_stok($resultanresep);
+        if ($errors !== NULL) {
+          return  back()->withErrors($errors);
+        }
+  
+        foreach ($resultanresep as $key => $value) {
+            $perintah=kurangi_stok($key,$value);
+            if ($perintah === false) { $habis = array_push($habis,$key); }
+        }         
     }
     
     public function tagihan($id)
