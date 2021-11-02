@@ -128,6 +128,8 @@
                   {{ get_value('users', $dokter->id, 'name') }}</option>
               @endforeach
             </select>
+            <input type="hidden" name="dokter" value="{{ $dokter->id }}" {{ $dokter->id === Auth::user()->id ? 'selected' : '' }} />
+
           </div>
           <div class="form-group row">
             <label for="keluhan-utama">Keluhan Utama</label>
