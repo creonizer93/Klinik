@@ -139,6 +139,7 @@
   <script>
     $(document).ready(function() {
       var table = $('#pasien').DataTable({
+        order: [[ 3, "desc" ]]
         pageLength: 10,
         lengthMenu: [
           [5, 10, 20, -1],

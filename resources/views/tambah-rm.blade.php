@@ -265,15 +265,21 @@
 
       var res = $("#reseplist option:selected").html();
       var resid = $("#reseplist").val();
+      var x = 0;
+      if (resid != 6){
+        x = "";
+      } else {
+        x
+      }
       if (resid !== null) {
         //code
         $("#reseps").append('<tr><td><input type="hidden" name="resep[' + a + '][id]" value="' + resid +
           '" class="form-control" readonly></td><td width="30%"><input type="text" name="resep[' + a +
           '][nama]" value="' + res +
           '" class="form-control" readonly></td><td width ="10%"><input type="text" name="resep[' + a +
-          '][jumlah]" placeholder="Jumlah" class="form-control" required><td width="30%"><input type="text" name="resep[' +
+          '][jumlah]" value="'+ x +'" placeholder="Jumlah" class="form-control" required><td width="30%"><input type="text" name="resep[' + 
           a +
-          '][aturan]" placeholder="Aturan pakai" class="form-control" required></td><td><button type="button" class="btn btn-danger remove-res">Hapus</button></td></tr>'
+          '][aturan]" value="'+ x +'" placeholder="Aturan pakai" class="form-control" required></td><td><button type="button" class="btn btn-danger remove-res">Hapus</button></td></tr>'
         );
       }
       ++a;

@@ -76,7 +76,6 @@ class RMController extends Controller
         }
         
         $newresep = array();
-
         $oldresep=array_combine(encode(get_value('rm',$request->id,'resep')),encode(get_value('rm',$request->id,'jumlah')));
         foreach ($request->resep as $resep){
             $newresep[$resep['id']] = $resep['jumlah'];
