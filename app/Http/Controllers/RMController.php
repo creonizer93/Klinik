@@ -164,10 +164,9 @@ class RMController extends Controller
     //Hallaman Edit Pasien
     public function edit_rm($id)
     {
-        if (Auth::User()->admin !== 1) {
-            if (Auth::User()->profesi !== "Dokter") {
+        if (Auth::User()->profesi !== "Dokter")
+              {
                 abort(403, 'Anda Tidak berhak Mengakses Halaman Ini.');
-            }
             $dokters=DB::table('rm')->select('dokter')->where('id',$id)->get();;
             foreach ($dokters as $dokter) {            
                 if (Auth::User()->id !== $dokter->dokter) {

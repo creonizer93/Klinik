@@ -74,6 +74,7 @@ Route::delete('/rm/hapus/{id}','RMController@hapus_rm')->name('rm.destroy')->mid
 
 Route::get('/rm/edit/{id}', 'RMController@edit_rm')->name('rm.edit')->middleware('auth');
 
+
 Route::get('/rm/tambah', 'RMController@tambah_rm')->name('rm.tambah')->middleware('auth');
 
 Route::get('/rm/tambah/{idpasien}', 'RMController@tambah_rmid')->name('rm.tambah.id')->middleware('auth');

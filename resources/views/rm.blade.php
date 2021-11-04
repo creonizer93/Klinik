@@ -98,8 +98,9 @@
                       @for ($i = 0; $i < sizeof($resep = encode($rm->resep)); $i++)
                         @if ($aturan = encode($rm->aturan))
                           <li>{{ get_value('obat', $resep[$i], 'nama_obat') }}
-                            {{ get_value('obat', $resep[$i], 'sediaan') }} {{ get_value('obat', $resep[$i], 'dosis') }}
-                            {{ get_value('obat', $resep[$i], 'satuan') }} : {{ $aturan[$i] }}</li>
+                            {{ get_value('obat', $resep[$i], 'sediaan') }}
+                            {{ get_value('obat', $resep[$i], 'dosis') }}
+                            {{ get_value('obat', $resep[$i], 'satuan') }} {{ $aturan[$i] }}</li>
                         @endif
                       @endfor
                     @endif
@@ -139,7 +140,9 @@
   <script>
     $(document).ready(function() {
       var table = $('#pasien').DataTable({
-        order: [[ 3, "desc" ]]
+        order: [
+          [3, "desc"]
+        ]
         pageLength: 10,
         lengthMenu: [
           [5, 10, 20, -1],
@@ -163,7 +166,7 @@
           '" class="form-control" readonly></td><td><input type="text" name="lab[' + i + '][nama]" value="' + pen +
           '" class="form-control" readonly></td><td><input type="text" name="lab[' + i +
           '][hasil]" placeholder="Hasil" class="form-control" required></td><td><button type="button" class="btn btn-danger remove-pen">Hapus</button></td></tr>'
-          );
+        );
       }
     };
 
@@ -179,7 +182,7 @@
           '" class="form-control" readonly></td><td><input type="text" name="resep[' + a +
           '][jumlah]" placeholder="Jumlah" class="form-control" required><td><input type="text" name="resep[' + a +
           '][aturan]" placeholder="Aturan pakai" class="form-control" required></td><td><button type="button" class="btn btn-danger remove-res">Hapus</button></td></tr>'
-          );
+        );
       }
     };
 
