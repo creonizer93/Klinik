@@ -78,6 +78,6 @@ class ProfileController extends Controller
             ]);
         }
 
-    return redirect()->route('dashboard')->with('pesan','Data Profil Berhasil Disimpan');
+    return redirect()->route('user')->with('pesan','Data Profil Berhasil Disimpan');
 }
 }
