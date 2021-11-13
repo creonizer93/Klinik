@@ -76,6 +76,7 @@ Route::get('/rm/edit/{id}', 'RMController@edit_rm')->name('rm.edit')->middleware
 
 
 Route::get('/rm/tambah', 'RMController@tambah_rm')->name('rm.tambah')->middleware('auth');
+Route::get('/rm/antri', 'RMController@antri_rm')->name('rm.antri')->middleware('auth');
 
 Route::get('/rm/tambah/{idpasien}', 'RMController@tambah_rmid')->name('rm.tambah.id')->middleware('auth');
 

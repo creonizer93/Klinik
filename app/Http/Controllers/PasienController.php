@@ -60,6 +60,7 @@ class PasienController extends Controller
             'alergi' => $request ->alergi,
             'created_time' => Carbon::now(),
             'updated_time' => Carbon::now(),
+            'visit' => "1",
         ]);
            $ids= DB::table('pasien')->latest('created_time')->first();         
             switch($request->simpan) {

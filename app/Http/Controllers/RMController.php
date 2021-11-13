@@ -252,7 +252,7 @@ class RMController extends Controller
 
     public function antri_rm()
     {
-        $metadatas = ambil_satudata('metadata',11);
+        $metadatas = ambil_satudata('metadata',19);
         $pasiens = ambil_filterdata('pasien');
 
         $cont=[
@@ -311,29 +311,8 @@ class RMController extends Controller
             $resep_id = "";
             $resep_jumlah = "";
             $resep_dosis = "";
-        }
-        
-        // $newresep = array();
-        // $oldresep=array();
-        // foreach ($request->resep as $resep){
-        //     $newresep[$resep['id']] = $resep['jumlah'];
-            
-        // }
-        // if (empty($oldresep)) {
-        //     $resultanresep = resultan_resep($oldresep,$newresep);
-        // }
-        // else {$resultanresep=$newresep;}
-        // $errors = validasi_stok($resultanresep);
-        // if ($errors !== NULL) {
-        //   return  back()->withErrors($errors);
-        // }
-  
-        // foreach ($resultanresep as $key => $value) {
-        //     $perintah=kurangi_stok($key,$value);
-        //     if ($perintah === false) { $habis = array_push($habis,$key); }
-        // }
-   
-        DB::table('rm')->insert([
+        }  
+        DB::table('rm',)->insert([
             'idpasien' => $request->idpasien,
             'ku' => $request->keluhan_utama,
             'anamnesis' => $request->anamnesis,
@@ -347,6 +326,9 @@ class RMController extends Controller
             'dokter' => $request->dokter,
             'created_time' => Carbon::now(),
             'updated_time' => Carbon::now(),
+        ]);
+        DB::table('pasien',)->where('id',$request->idpasien)->update([
+            'visit' => "0",
         ]);
     
            $ids= DB::table('rm')->latest('created_time')->first();         
