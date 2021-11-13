@@ -225,6 +225,7 @@ class RMController extends Controller
     {
         $metadatas = ambil_satudata('metadata',11);
         $pasiens = ambil_semuadata('pasien');
+
         $cont=[
           'aria'=>'true',
           'show'=>'show',
@@ -247,6 +248,19 @@ class RMController extends Controller
           'col'=>'collapsed'  
         ];
         return view('tambah-rm',compact('metadatas','idens','pasiens','cont','labs','obats','dokters'));  
+    }
+
+    public function antri_rm()
+    {
+        $metadatas = ambil_satudata('metadata',11);
+        $pasiens = ambil_filterdata('pasien');
+
+        $cont=[
+          'aria'=>'true',
+          'show'=>'show',
+          'col'=>''  
+        ];
+        return view('tambah-rm',compact('metadatas','pasiens','cont'));  
     }
     
     public function simpan_rm(Request $request)

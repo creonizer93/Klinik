@@ -52,6 +52,16 @@ use Illuminate\Support\Facades\Schema;
        
         return ($data);
     }
+    function ambil_filterdata($tabel) {
+        if (Schema::hasColumn($tabel,'visit')) {
+            $data = DB::table($tabel)->orderBy('id', 'desc')->where('visit','=',1)->get();
+        }
+        else {
+            $data = DB::table($tabel)->orderBy('id', 'desc')->get();     
+        }
+        
+        return ($data);
+    }
     
     //Merubah Format mata uang 
     function formatrupiah($angka) {
@@ -176,6 +186,8 @@ use Illuminate\Support\Facades\Schema;
         if ($cek < 0) {return false;}
         else {return true;}
     }
+     
+   
     
     function cek_stok_warning ($min){
         $obats= ambil_semuadata('obat');
