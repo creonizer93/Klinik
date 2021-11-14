@@ -57,6 +57,7 @@
                 <th>No RM</th>
                 <th>Tanggal Periksa</th>
                 <th>Keluhan Utama</th>
+                <th>Cek Fisik</th>
                 <th>Lab</th>
                 <th>Diagnosis</th>
                 <th>Terapi</th>
@@ -69,6 +70,7 @@
                 <th>No RM</th>
                 <th>Tanggal Periksa</th>
                 <th>Keluhan Utama</th>
+                <th>Cek Fisik</th>
                 <th>Lab</th>
                 <th>Diagnosis</th>
                 <th>Terapi</th>
@@ -82,6 +84,15 @@
                   <td>{{ str_pad($rm->idpasien, 4, '0', STR_PAD_LEFT) }}</td>
                   <td>{{ format_date($rm->created_time) }}</td>
                   <td>{{ $rm->ku }}</td>
+                  <td>
+
+                    <li>TD {{ $rm->sistolik }}/{{ $rm->diastolik }}</li>
+                    <li>HR {{ $rm->hr }}</li>
+                    <li>BB {{ $rm->bb }}</li>
+                    <li>TB {{ $rm->tb }}</li>
+                    <li>RR {{ $rm->rr }}</li>
+
+                  </td>
                   <td>
                     @if ($rm->lab != null)
                       @for ($i = 0; $i < sizeof($lab = encode($rm->lab)); $i++)

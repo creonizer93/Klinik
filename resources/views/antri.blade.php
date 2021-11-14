@@ -139,61 +139,12 @@
           </div>
           <div class="form-group row">
             <label for="anamnesis">Anamnesis</label>
-            <textarea type="date" class="form-control " name="anamnesis" value="{{ Request::old('anamnesis') }}"
-              required></textarea>
+            <textarea type="date" class="form-control " name="anamnesis" required></textarea>
           </div>
           <div class="form-group row">
             <label for="pemeriksaan_fisik">Pemeriksaan Fisik</label>
-            <textarea type="date" class="form-control " name="px_fisik"></textarea>
+            <textarea type="date" class="form-control " name="px_fisik" required></textarea>
           </div>
-          {{-- slider --}}
-          <div class="form-group row">
-            <div class="col">
-              <label for="sistolik">Sistolik</label>
-              <input type="range" name="sistolik1" min="40" max="170" value="{{ Request::old('sistolik') }}"
-                oninput="this.form.sistolik2.value=this.value" />
-              <input type="number" name="sistolik2" min="40" max="170" value="{{ Request::old('sistolik') }}"
-                oninput="this.form.sistolik1.value=this.value" />
-            </div>
-            <div class="col">
-              <label for="diastolik">Diastolik</label>
-              <input type="range" name="diastolik1" min="40" max="170" value="{{ Request::old('diastolik') }}"
-                oninput="this.form.diastolik2.value=this.value" />
-              <input type="number" name="diastolik2" min="40" max="170" value="{{ Request::old('diastolik') }}"
-                oninput="this.form.diastolik1.value=this.value" />
-            </div>
-            <div class="col">
-              <label for="hr">HeartRate</label>
-              <input type="range" name="hr1" min="40" max="170" value="{{ Request::old('hr') }}"
-                oninput="this.form.hr2.value=this.value" />
-              <input type="number" name="hr2" min="40" max="170" value="{{ Request::old('hr') }}"
-                oninput="this.form.hr1.value=this.value" />
-            </div>
-            <div class="col">
-              <label for="bb">Berat Badan</label>
-              <input type="range" name="bb1" min="0" max="150" value="{{ Request::old('bb') }}"
-                oninput="this.form.bb2.value=this.value" />
-              <input type="number" name="bb2" min="0" max="150" value="{{ Request::old('bb') }}"
-                oninput="this.form.bb1.value=this.value" />
-            </div>
-            <div class="col">
-              <label for="tb">Tinggi Badan</label>
-              <input type="range" name="tb1" min="40" max="170" value="{{ Request::old('tb') }}"
-                oninput="this.form.tb2.value=this.value" />
-              <input type="number" name="tb2" min="40" max="170" value="{{ Request::old('tb') }}"
-                oninput="this.form.tb1.value=this.value" />
-            </div>
-            <div class="col">
-              <label for="rr">Respiration Rate</label>
-              <input type="range" name="rr1" min="40" max="170" value="{{ Request::old('rr') }}"
-                oninput="this.form.rr2.value=this.value" />
-              <input type="number" name="rr2" min="40" max="170" value="{{ Request::old('rr') }}"
-                oninput="this.form.rr1.value=this.value" />
-            </div>
-
-          </div>
-          {{-- end slider --}}
-
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
               <label for="penunjang">Pemeriksaan Penunjang</label>
@@ -223,7 +174,7 @@
           <div class="form-group row">
             <div class="col-sm-12 mb-3 mb-sm-0">
               <label for="diagnosis">Diagnosis</label>
-              <input type="text" class="form-control " name="diagnosis" value="{{ Request::old('diagnosis') }}"
+              <input type="text" class="form-control " name="diagnosis"
                 {{ Auth::user()->profesi !== 'Dokter' ? 'readonly' : '' }}>
             </div>
           </div>

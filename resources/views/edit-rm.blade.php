@@ -107,13 +107,15 @@
             <input type="hidden" name="id" value="{{ $data->id }}">
             <div class="form-group row col-sm-12">
               <label for="dokter">Dokter Pemeriksa</label>
-              <select class="form-control " name="dokter" {{ Auth::user()->admin !== 1 ? (Auth::user()->profesi !== 'Staff' ? 'disabled="true"' : '') : '' }}>
+              <select class="form-control " name="dokter"
+                {{ Auth::user()->admin !== 1 ? (Auth::user()->profesi !== 'Staff' ? 'disabled="true"' : '') : '' }}>
                 @foreach ($dokters as $dokter)
                   <option value="{{ $dokter->id }}" {{ $dokter->id === $data->dokter ? 'selected' : '' }}>dr.
                     {{ get_value('users', $dokter->id, 'name') }}</option>
                 @endforeach
               </select>
-              <input type="hidden" name="dokter" value="{{ $dokter->id }}" {{ $dokter->id === $data->dokter ? 'selected' : '' }} />
+              <input type="hidden" name="dokter" value="{{ $dokter->id }}"
+                {{ $dokter->id === $data->dokter ? 'selected' : '' }} />
             </div>
             <div class="form-group row col-sm-12">
               <label for="keluhan-utama">Keluhan Utama</label>
@@ -123,12 +125,60 @@
               <label for="anamnesis">Anamnesis</label>
               <textarea type="date" class="form-control " name="anamnesis" required>{{ $data->anamnesis }}</textarea>
             </div>
+            {{-- slider --}}
             <div class="form-group row">
+              <div class="col">
+                <label for="sistolik">Sistolik</label>
+                <input type="range" name="sistolik1" min="40" max="170" value="{{ $data->sistolik }}"
+                  oninput="this.form.sistolik2.value=this.value" />
+                <input type="number" name="sistolik2" min="40" max="170" value="{{ $data->sistolik }}"
+                  oninput="this.form.sistolik1.value=this.value" />
+              </div>
+              <div class="col">
+                <label for="diastolik">Diastolik</label>
+                <input type="range" name="diastolik1" min="40" max="170" value="{{ $data->diastolik }}"
+                  oninput="this.form.diastolik2.value=this.value" />
+                <input type="number" name="diastolik2" min="40" max="170" value="{{ $data->diastolik }}"
+                  oninput="this.form.diastolik1.value=this.value" />
+              </div>
+              <div class="col">
+                <label for="hr">HeartRate</label>
+                <input type="range" name="hr1" min="40" max="170" value="{{ $data->hr }}"
+                  oninput="this.form.hr2.value=this.value" />
+                <input type="number" name="hr2" min="40" max="170" value="{{ $data->hr }}"
+                  oninput="this.form.hr1.value=this.value" />
+              </div>
+              <div class="col">
+                <label for="bb">Berat Badan</label>
+                <input type="range" name="bb1" min="0" max="150" value="{{ $data->bb }}"
+                  oninput="this.form.bb2.value=this.value" />
+                <input type="number" name="bb2" min="0" max="150" value="{{ $data->bb }}"
+                  oninput="this.form.bb1.value=this.value" />
+              </div>
+              <div class="col">
+                <label for="tb">Tinggi Badan</label>
+                <input type="range" name="tb1" min="40" max="170" value="{{ $data->tb }}"
+                  oninput="this.form.tb2.value=this.value" />
+                <input type="number" name="tb2" min="40" max="170" value="{{ $data->tb }}"
+                  oninput="this.form.tb1.value=this.value" />
+              </div>
+              <div class="col">
+                <label for="rr">Respiration Rate</label>
+                <input type="range" name="rr1" min="40" max="170" value="{{ $data->rr }}"
+                  oninput="this.form.rr2.value=this.value" />
+                <input type="number" name="rr2" min="40" max="170" value="{{ $data->rr }}"
+                  oninput="this.form.rr1.value=this.value" />
+              </div>
+
+            </div>
+            {{-- end slider --}}
+
+            {{-- <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">
                 <label for="pemeriksaan_fisik">Pemeriksaan Fisik</label>
                 <textarea type="date" class="form-control " name="px_fisik" required>{{ $data->pxfisik }}</textarea>
               </div>
-            </div>
+            </div> --}}
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="penunjang">Pemeriksaan Penunjang</label>
@@ -220,7 +270,7 @@
                         <td><button type="button" class="btn btn-danger remove-pen">Hapus</button></td>
                       </tr>
                     @endfor
-                    @elseif ($data->resep ===0)
+                  @elseif ($data->resep ===0)
                     <tr>""</tr>
                   @endif
                 </table>
