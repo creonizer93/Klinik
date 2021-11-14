@@ -45,7 +45,7 @@
     <div class="collapse show" id="Identitas">
       <div class="card-body">
         @foreach ($idens as $iden)
-          <form class="user" action="">
+          <form class="user" action="">  
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="Nama_Lengkap">Nama Lengkap</label>

@@ -509,7 +509,6 @@ class RMController extends Controller
     {
 
         $metadatas = ambil_satudata('metadata',19);
-
         $pasiens = ambil_filterdata('pasien');
 
 
@@ -722,6 +721,9 @@ class RMController extends Controller
 
         ]);
         
+        DB::table('pasien',)->where('id',$request->idpasien)->update([
+            'visit' => "0",
+        ]);
         DB::table('pasien',)->where('id',$request->idpasien)->update([
             'visit' => "0",
         ]);
