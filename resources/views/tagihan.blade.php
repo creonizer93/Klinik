@@ -64,7 +64,7 @@
                             <div>
                                 <strong>{{$iden->nama}}</strong>
                             </div>
-                                <div>Usia : {{hitung_usia($iden->tgl_lhr)}}</div>
+                                <div>Umur : {{$iden->umur}}</div>
                                 <div>Alamat : {{$iden->alamat}}</div>
                                 <div>No. Hp: {{$iden->hp}}</div>
                             @endforeach

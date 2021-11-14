@@ -52,8 +52,8 @@
                 <input type="text" class="form-control " name="Nama_Lengkap" value="{{ $iden->nama }}" readonly>
               </div>
               <div class="col-sm-6">
-                <label for="Tanggal_Lahir">Tanggal lahir :</label>
-                <input type="date" class="form-control " name="Tanggal_Lahir" value="{{ $iden->tgl_lhr }}" readonly>
+                <label for="Umur">Umur :</label>
+                <input type="text" class="form-control " name="Umur" value="{{ $iden->umur }}" readonly>
               </div>
             </div>
             <div class="form-group row">
@@ -68,10 +68,10 @@
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="no_bpjs">No. BPJS</label>
-                <input type="text" class="form-control " name="no_bpjs" value="{{ $iden->no_bpjs }}" readonly>
-              </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label for="alergi">Riwayat Alergi</label>
+                  <input type="text" class="form-control " name="alergi" value="{{ $iden->alergi }}" readonly>
+                </div>
               <div class="col-sm-6">
                 <label for="no_handphone">No. Handphone</label>
                 <input type="text" class="form-control " name="no_handphone" value="{{ $iden->hp }}" readonly>
@@ -164,7 +164,7 @@
                     <th scope="col">Diastolik</th>
                     <th scope="col">Heart Rate</th>
                     <th scope="col">Berat Badan</th>
-                    <th scope="col">Tinggi Badan</th>
+                    <th scope="col">Temperature</th>
                     <th scope="col">Respiration Rate</th>
                   </tr>
                 </thead>

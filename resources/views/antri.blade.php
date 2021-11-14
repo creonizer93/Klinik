@@ -43,7 +43,7 @@
                   <td>{{ $pasien->nama }}</td>
                   <td>{{ $pasien->hp }}</td>
                   <td width="120px">
-                    <a href="{{ route('rm.tambah.id', $pasien->id) }}" class="btn btn-primary btn-sm btn-icon-split">
+                    <a href="{{ route('rm.list', $pasien->id) }}" class="btn btn-primary btn-sm btn-icon-split">
                       <span class="icon text-white-50">
                         <i style="padding-top:4px" class="fas fa-check"></i>
                       </span>

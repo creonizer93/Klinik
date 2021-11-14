@@ -52,8 +52,8 @@
                 <input type="text" class="form-control " name="Nama_Lengkap" value="{{ $iden->nama }}" readonly>
               </div>
               <div class="col-sm-6">
-                <label for="Tanggal_Lahir">Tanggal lahir :</label>
-                <input type="date" class="form-control " name="Tanggal_Lahir" value="{{ $iden->tgl_lhr }}" readonly>
+                <label for="umur">Umur</label>
+                <input type="text" class="form-control " name="Umur" value="{{ $iden->umur }}" readonly>
               </div>
             </div>
             <div class="form-group row">
@@ -69,8 +69,8 @@
 
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <label for="no_bpjs">No. BPJS</label>
-                <input type="text" class="form-control " name="no_bpjs" value="{{ $iden->no_bpjs }}" readonly>
+                <label for="alergi">Riwayat Alergi</label>
+                <input type="text" class="form-control " name="alergi" value="{{ $iden->alergi }}" readonly>
               </div>
               <div class="col-sm-6">
                 <label for="no_handphone">No. Handphone</label>
@@ -129,44 +129,44 @@
             <div class="form-group row">
               <div class="col">
                 <label for="sistolik">Sistolik</label>
-                <input type="range" name="sistolik1" min="40" max="170" value="{{ $data->sistolik }}"
+                <input type="range" name="sistolik1" min="70" max="300" value="{{ $data->sistolik }}"
                   oninput="this.form.sistolik2.value=this.value" />
-                <input type="number" name="sistolik2" min="40" max="170" value="{{ $data->sistolik }}"
+                <input type="number" name="sistolik2" min="70" max="300" value="{{ $data->sistolik }}"
                   oninput="this.form.sistolik1.value=this.value" />
               </div>
               <div class="col">
                 <label for="diastolik">Diastolik</label>
-                <input type="range" name="diastolik1" min="40" max="170" value="{{ $data->diastolik }}"
+                <input type="range" name="diastolik1" min="30" max="150" value="{{ $data->diastolik }}"
                   oninput="this.form.diastolik2.value=this.value" />
-                <input type="number" name="diastolik2" min="40" max="170" value="{{ $data->diastolik }}"
+                <input type="number" name="diastolik2" min="30" max="150" value="{{ $data->diastolik }}"
                   oninput="this.form.diastolik1.value=this.value" />
               </div>
               <div class="col">
                 <label for="hr">HeartRate</label>
-                <input type="range" name="hr1" min="40" max="170" value="{{ $data->hr }}"
+                <input type="range" name="hr1" min="40" max="150" value="{{ $data->hr }}"
                   oninput="this.form.hr2.value=this.value" />
-                <input type="number" name="hr2" min="40" max="170" value="{{ $data->hr }}"
+                <input type="number" name="hr2" min="40" max="150" value="{{ $data->hr }}"
                   oninput="this.form.hr1.value=this.value" />
               </div>
               <div class="col">
                 <label for="bb">Berat Badan</label>
-                <input type="range" name="bb1" min="0" max="150" value="{{ $data->bb }}"
+                <input type="range" name="bb1" min="3" max="150" value="{{ $data->bb }}"
                   oninput="this.form.bb2.value=this.value" />
-                <input type="number" name="bb2" min="0" max="150" value="{{ $data->bb }}"
+                <input type="number" name="bb2" min="3" max="150" value="{{ $data->bb }}"
                   oninput="this.form.bb1.value=this.value" />
               </div>
               <div class="col">
-                <label for="tb">Tinggi Badan</label>
-                <input type="range" name="tb1" min="40" max="170" value="{{ $data->tb }}"
+                <label for="tb">Temperature</label>
+                <input type="range" name="tb1" min="35" max="40" value="{{ $data->tb }}"
                   oninput="this.form.tb2.value=this.value" />
-                <input type="number" name="tb2" min="40" max="170" value="{{ $data->tb }}"
+                <input type="number" name="tb2" min="35" max="40" value="{{ $data->tb }}"
                   oninput="this.form.tb1.value=this.value" />
               </div>
               <div class="col">
                 <label for="rr">Respiration Rate</label>
-                <input type="range" name="rr1" min="40" max="170" value="{{ $data->rr }}"
+                <input type="range" name="rr1" min="18" max="50" value="{{ $data->rr }}"
                   oninput="this.form.rr2.value=this.value" />
-                <input type="number" name="rr2" min="40" max="170" value="{{ $data->rr }}"
+                <input type="number" name="rr2" min="18" max="50" value="{{ $data->rr }}"
                   oninput="this.form.rr1.value=this.value" />
               </div>
 
@@ -186,8 +186,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-
-                <select num="{{ $num['lab'] }}" class="form-control " id="penunjang" name="penunjang">
+                <select num="{{ $num['lab'] }}" class="form-control " id="penunjang" name="penunjang" {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}>
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($labs as $lab)
                     <option satuan="{{ $lab->satuan }}" value="{{ $lab->id }}">{{ $lab->nama }}</option>
@@ -227,18 +226,17 @@
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">
                 <label for="diagnosis">Diagnosis</label>
-                <input type="text" class="form-control " name="diagnosis" value="{{ $data->diagnosis }}" required>
+                <input type="text" class="form-control " name="diagnosis" value="{{ $data->diagnosis }}" {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}required >
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="reseplist">Resep</label>
-                `
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-9 mb-0 mb-sm-0">
-                <select num="{{ $num['resep'] }}" class="form-control " name="reseplist" id="reseplist">
+                <select {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }} num="{{ $num['resep'] }}" class="form-control " name="reseplist" id="reseplist">
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($obats as $obat)
                     <option value="{{ $obat->id }}">{{ $obat->nama_obat }} {{ $obat->sediaan }}

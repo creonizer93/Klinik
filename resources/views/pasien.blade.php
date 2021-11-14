@@ -52,7 +52,7 @@
               <th>No RM</th>
               <th>No KTP</th>
               <th>Nama Lengkap</th>
-              <th>Usia</th>
+              <th>Umur</th>
               <th>Jenis Kelamin</th>
               <th>Alamat</th>
               <th>No. Hp</th>
@@ -64,7 +64,7 @@
               <th>No RM</th>
               <th>No KTP</th>
               <th>Nama Lengkap</th>
-              <th>Usia</th>
+              <th>Umur</th>
               <th>Jenis Kelamin</th>
               <th>Alamat</th>
               <th>No. Hp</th>
@@ -77,7 +77,7 @@
                 <td width="5%">{{ str_pad($pasien->id, 4, '0', STR_PAD_LEFT) }}</td>
                 <td width="15%">{{ $pasien->ktp }}</td>
                 <td>{{ $pasien->nama }}</td>
-                <td>{{ hitung_usia($pasien->tgl_lhr) }}</td>
+                <td>{{ $pasien->umur }}</td>
                 <td>{{ $pasien->jk }}</td>
                 <td class="text-truncate" style="max-width: 150px;">{{ $pasien->alamat }}</td>
                 <td>{{ $pasien->hp }}</td>

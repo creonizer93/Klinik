@@ -57,19 +57,15 @@
             <input type="hidden" name="id" value="{{ $data->id }}">
             <div class="form-group row">
               <div class="col-sm-3 mb-3 mb-sm-0">
-                <input type="text" class="form-control " name="KTP" placeholder="Nama Lengkap"
+                <input type="text" class="form-control " name="KTP" placeholder="No KTP"
                   value="{{ $data->ktp }}">
               </div>
               <div class="col-sm mb-3 mb-sm-0">
                 <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap"
                   value="{{ $data->nama }}">
               </div>
-              <div class="col-sm-">
-                <label for="Tanggal_Lahir" align="center" class="form-text">Tanggal lahir :</label>
-              </div>
-              <div class="col-sm-4">
-                <input type="date" class="form-control " name="Tanggal_Lahir" placeholder="Tanggal lahir"
-                  value="{{ $data->tgl_lhr }}">
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <input type="text" class="form-control " name="Umur" placeholder="Umur" value="{{ $data->umur }}">
               </div>
             </div>
             <div class="form-group">

@@ -16,19 +16,17 @@
       <div class="card-body">
         <form class="user" action="{{ route('pasien.simpan') }}" method="post">
           {{ csrf_field() }}
-          <div class="form-group">
-            <input type="text" class="form-control " name="KTP" placeholder="No KTP" required>
-          </div>
           <div class="form-group row">
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="KTP" placeholder="No KTP">
+            </div>
             <div class="col-sm-6 mb-3 mb-sm-0">
               <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap" required>
             </div>
-            <div class="col-sm-2">
-              <label align="center" class="form-text">Tanggal lahir :</label>
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="Umur" placeholder="Umur">
             </div>
-            <div class="col-sm-4">
-              <input type="date" class="form-control " name="Tanggal_Lahir" placeholder="Tanggal lahir" required>
-            </div>
+  
           </div>
           <div class="form-group">
             <input type="text" class="form-control " name="Alamat" placeholder="Alamat" required>
@@ -38,7 +36,7 @@
               <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan (Tidak Wajib)">
             </div>
             <div class="col-sm-6">
-              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone" required>
+              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone" >
             </div>
           </div>
           <div class="form-group row">
