@@ -21,8 +21,8 @@
                                 <input type="text" class="form-control " name="Nama_Lengkap" value="{{$iden->nama}}" readonly>
                             </div>
                           <div class="col-sm-6">
-                            <label for="Tanggal_Lahir">Tanggal lahir :</label>
-                            <input type="date" class="form-control " name="Tanggal_Lahir"  value="{{$iden->tgl_lhr}}" readonly>
+                            <label for="Umur">Umur :</label>
+                            <input type="text" class="form-control " name="Umur"  value="{{$iden->umur}}" readonly>
                           </div>
                         </div>
                         <div class="form-group row">

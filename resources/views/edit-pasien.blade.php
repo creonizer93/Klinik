@@ -55,6 +55,7 @@
           <form class="user" action="{{ route('pasien.update') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ $data->id }}">
+            
             <div class="form-group row">
               <div class="col-sm-3 mb-3 mb-sm-0">
                 <input type="text" class="form-control " name="KTP" placeholder="No KTP"

@@ -56,9 +56,9 @@ use Illuminate\Support\Facades\Schema;
         if (Schema::hasColumn($tabel,'visit')) {
             $data = DB::table($tabel)->orderBy('id', 'desc')->where('visit','=',1)->get();
         }
-        else {
-            $data = DB::table($tabel)->orderBy('id', 'desc')->get();     
-        }
+        // else {
+        //     $data = DB::table($tabel)->orderBy('id', 'desc')->get();     
+        // }
         
         return ($data);
     }

@@ -107,8 +107,6 @@ class PasienController extends Controller
 
             'updated_time' => Carbon::now(),
 
-            'visit' => "1",
-
         ]);
 
            $ids= DB::table('pasien')->latest('created_time')->first();         

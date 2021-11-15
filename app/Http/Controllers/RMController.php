@@ -130,15 +130,20 @@ class RMController extends Controller
             'aturan' => "",
 
             'dokter' => $request->dokter,
+            
 
             'created_time' => Carbon::now(),
 
             'updated_time' => Carbon::now(),
 
+            'visit' => "0",
+
+           
+
         ]);
-            DB::table('pasien')->where('id',$request->idpasien)->update([
-                'visit' => "0",
-            ]);
+            // DB::table('pasien')->where('id',$request->idpasien)->update([
+            //     'visit' => "0",
+            // ]);
 
         $ids= DB::table('rm')->latest('created_time')->first(); 
 
@@ -508,22 +513,11 @@ class RMController extends Controller
 
     {
 
+        $rms = ambil_filterdata('rm');
+
         $metadatas = ambil_satudata('metadata',19);
-        $pasiens = ambil_filterdata('pasien');
-
-
-
-        $cont=[
-
-          'aria'=>'true',
-
-          'show'=>'show',
-
-          'col'=>''  
-
-        ];
-
-        return view('antri',compact('metadatas','pasiens','cont'));  
+        
+        return view('antri', compact('rms','metadatas',));
 
     }
 
@@ -598,46 +592,6 @@ class RMController extends Controller
         $lab_hasil ="";
 
        }
-
-// Decoding array input cek fisik
-
-    //    if (isset($request->px_fisik))
-
-    //     {
-
-    //         $this->validate($request, [
-
-    //             'pxfisik.*.sistolik' => 'required',
-
-    //             'pxfisik.*.diastolik' => 'required',
-
-    //             'pxfisik.*.hr' => 'required',
-
-    //             'pxfisik.*.bb' => 'required',
-
-    //             'pxfisik.*.tb' => 'required',
-
-    //             'pxfisik.*.rr' => 'required',
-
-    //         ]);
-
-    //         $pxfisik_sistolik = decode('pxfisik','sistolik',$request->px_fisik);
-
-    //         $resep_jumlah = decode('resep','jumlah',$request->resep);
-
-    //         $resep_dosis = decode('resep','aturan',$request->resep); 
-
-    //     }
-
-    //     else {
-
-    //         $resep_id = "";
-
-    //         $resep_jumlah = "";
-
-    //         $resep_dosis = "";
-
-    //     }
 
        // Decoding array input resep
 
@@ -719,14 +673,16 @@ class RMController extends Controller
 
             'updated_time' => Carbon::now(),
 
+            'visit' => "1"
+
         ]);
         
-        DB::table('pasien',)->where('id',$request->idpasien)->update([
-            'visit' => "0",
-        ]);
-        DB::table('pasien',)->where('id',$request->idpasien)->update([
-            'visit' => "0",
-        ]);
+        // DB::table('pasien',)->where('id',$request->idpasien)->update([
+        //     'visit' => "0",
+        // ]);
+        // DB::table('pasien',)->where('id',$request->idpasien)->update([
+        //     'visit' => "0",
+        // ]);
     
 
     
