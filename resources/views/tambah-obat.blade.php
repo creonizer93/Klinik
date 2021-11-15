@@ -43,6 +43,8 @@
                                       <option value="mcg">mcg</option>
                                       <option value="IU">IU</option>
                                       <option value="mg/5ml">mg/5ml</option>
+                                      <option value="IU">IU</option>
+                                      
                                   </select>                                
                             </div>
                         </div>
