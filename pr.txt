@@ -1,0 +1,5 @@
+antrian, norm,nama, umur, alamat, cek fisik td hr
+sediakan search
+daftar antrian pasien
+search OBAT
+data pasien, tambah riwayat penyakit
