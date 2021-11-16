@@ -56,7 +56,7 @@ class RMController extends Controller
     public function update_rm(Request $request)
 
     {
-
+DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
        
        // Decoding array input pemeriksaan lab
 
@@ -71,21 +71,14 @@ class RMController extends Controller
                 return back()->withErrors($errors);
 
             }
-
-
-
-
-
             $this->validate($request, [
 
                 'lab.*.hasil' => 'required|numeric|digits_between:1,4',          
-
             ]);
 
             $lab_id = decode('lab','id',$request->lab);
 
             $lab_hasil = decode('lab','hasil',$request->lab);
-
        }
 
        else {
@@ -93,9 +86,7 @@ class RMController extends Controller
         $lab_id ="";
 
         $lab_hasil ="";
-
        }
-
        if ($request->resep === null){
 
         DB::table('rm')->where('id',$request->id)->update([
@@ -133,20 +124,13 @@ class RMController extends Controller
             'aturan' => "",
 
             'dokter' => $request->dokter,
-            
-
+                    
             'created_time' => Carbon::now(),
 
             'updated_time' => Carbon::now(),
 
-            'visit' => "0",
-
-           
-
+            //  'visit' => 0,
         ]);
-            // DB::table('pasien')->where('id',$request->idpasien)->update([
-            //     'visit' => "0",
-            // ]);
 
         $ids= DB::table('rm')->latest('created_time')->first(); 
 
@@ -340,27 +324,27 @@ class RMController extends Controller
 
     {
 
-        if (Auth::User()->admin !== 1) 
+        // if (Auth::User()->admin !== 1) 
 
-            if (Auth::User()->profesi !== "Dokter") {
+        //     if (Auth::User()->profesi !== "Dokter") {
 
-                abort(403, 'Anda Tidak berhak Mengakses Halaman Ini.');
+        //         abort(403, 'Anda Tidak berhak Mengakses Halaman Ini.');
 
             
 
-            $dokters=DB::table('rm')->select('dokter')->where('id',$id)->get();;
+        //     $dokters=DB::table('rm')->select('dokter')->where('id',$id)->get();;
 
-            foreach ($dokters as $dokter) {            
+        //     foreach ($dokters as $dokter) {            
 
-                if (Auth::User()->id !== $dokter->dokter) {
+        //         if (Auth::User()->id !== $dokter->dokter) {
 
-                abort(403, 'Anda Tidak berhak Mengakses Halaman Ini.');
+        //         abort(403, 'Anda Tidak berhak Mengakses Halaman Ini.');
 
-                }
+        //         }
 
-            }
+        //     }
 
-        }
+        // }
 
         
 
@@ -515,11 +499,9 @@ class RMController extends Controller
     public function antri_rm()
 
     {
-
         $rms = ambil_filterdata('rm');
         $metadatas = ambil_satudata('metadata',19);
         return view('antri', compact('rms','metadatas'));
-
     }
 
     
@@ -674,19 +656,10 @@ class RMController extends Controller
 
             'updated_time' => Carbon::now(),
 
-            'visit' => "1"
+            'visit' => 1,
 
         ]);
-        
-        // DB::table('pasien',)->where('id',$request->idpasien)->update([
-        //     'visit' => "0",
-        // ]);
-        // DB::table('pasien',)->where('id',$request->idpasien)->update([
-        //     'visit' => "0",
-        // ]);
-    
-
-    
+          
 
            $ids= DB::table('rm')->latest('created_time')->first();         
 

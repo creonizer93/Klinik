@@ -45,7 +45,7 @@
     <div class="collapse show" id="Identitas">
       <div class="card-body">
         @foreach ($idens as $iden)
-          <form class="user" action="">  
+          <form class="user" action="">
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="Nama_Lengkap">Nama Lengkap</label>
@@ -173,12 +173,7 @@
             </div>
             {{-- end slider --}}
 
-            {{-- <div class="form-group row">
-              <div class="col-sm-12 mb-3 mb-sm-0">
-                <label for="pemeriksaan_fisik">Pemeriksaan Fisik</label>
-                <textarea type="date" class="form-control " name="px_fisik" required>{{ $data->pxfisik }}</textarea>
-              </div>
-            </div> --}}
+
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="penunjang">Pemeriksaan Penunjang</label>
@@ -186,7 +181,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <select num="{{ $num['lab'] }}" class="form-control " id="penunjang" name="penunjang" {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}>
+                <select num="{{ $num['lab'] }}" class="form-control " id="penunjang" name="penunjang">
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($labs as $lab)
                     <option satuan="{{ $lab->satuan }}" value="{{ $lab->id }}">{{ $lab->nama }}</option>
@@ -226,7 +221,8 @@
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">
                 <label for="diagnosis">Diagnosis</label>
-                <input type="text" class="form-control " name="diagnosis" value="{{ $data->diagnosis }}" {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}required >
+                <input type="text" class="form-control " name="diagnosis" value="{{ $data->diagnosis }}"
+                  {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}required>
               </div>
             </div>
             <div class="form-group row">
@@ -236,7 +232,8 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-9 mb-0 mb-sm-0">
-                <select {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }} num="{{ $num['resep'] }}" class="form-control " name="reseplist" id="reseplist">
+                <select {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }} num="{{ $num['resep'] }}"
+                  class="form-control " name="reseplist" id="reseplist">
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($obats as $obat)
                     <option value="{{ $obat->id }}">{{ $obat->nama_obat }} {{ $obat->sediaan }}

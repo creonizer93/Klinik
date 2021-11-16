@@ -71,7 +71,7 @@
           @foreach ($idens as $iden)
             <form class="user" action="">
               <div class="form-group row">
-                          <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="col-sm-6 mb-3 mb-sm-0">
                   <label for="Nama_Lengkap">Nama Lengkap</label>
                   <input type="text" class="form-control " name="Nama_Lengkap" value="{{ $iden->nama }}" readonly>
                 </div>
@@ -202,8 +202,7 @@
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
 
-              <select class="form-control " id="penunjang" name="penunjang"
-                {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}>
+              <select class="form-control " id="penunjang" name="penunjang">
                 <option value="" selected disabled>Pilih satu</option>
                 @foreach ($labs as $lab)
                   <option satuan="{{ $lab->satuan }}" value="{{ $lab->id }}">{{ $lab->nama }}</option>
