@@ -10,7 +10,6 @@
 @section('konten')
   <!-- Content Row -->
   <div class="row">
-
     <!-- Jumlah Pasien Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
       <a href="{{ route('pasien') }}" class="text-decoration-none card border-left-primary shadow h-100 py-2">

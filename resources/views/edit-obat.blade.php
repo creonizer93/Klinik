@@ -58,11 +58,15 @@
                             <div class="col-sm-4 mb-3 mb-sm-0">
                                 <select class="form-control " name="sediaan" placeholder="Bentuk Sediaan">
                                       <option value="" disabled>Sediaan Obat</option>
-                                      <option value="Tablet" {{ $data->sediaan == 'Tablet' ? 'selected' : ''  }}>Tablet</option>
-                                      <option value="Kapsul" {{ $data->sediaan == 'Kapsul' ? 'selected' : ''  }}>Kapsul</option>
-                                      <option value="Syrup" {{ $data->sediaan == 'Syrup' ? 'selected' : ''  }}>Syrup</option>
                                       <option value="Ampul" {{ $data->sediaan == 'Ampul' ? 'selected' : ''  }}>Ampul</option>
-                                      <option value="Flask" {{ $data->sediaan == 'Flask' ? 'selected' : ''  }}>Flask</option>
+                                      <option value="Botol" {{ $data->sediaan == 'Botol' ? 'selected' : ''  }}>Botol</option>
+                                      <option value="Kotak" {{ $data->sediaan == 'Kotak' ? 'selected' : ''  }}>Kotak</option>
+                                      <option value="Pcs" {{ $data->sediaan == 'Pcs' ? 'selected' : ''  }}>Pcs</option>
+                                      <option value="Set" {{ $data->sediaan == 'Set' ? 'selected' : ''  }}>Set</option>
+                                      <option value="Strip" {{ $data->sediaan == 'Strip' ? 'selected' : ''  }}>Strip</option>
+                                      <option value="Tablet" {{ $data->sediaan == 'Tablet' ? 'selected' : ''  }}>Tablet</option>
+                                      <option value="Tube" {{ $data->sediaan == 'Tube' ? 'selected' : ''  }}>Tube</option>
+                                      <option value="Vial" {{ $data->sediaan == 'Vial' ? 'selected' : ''  }}>Vial</option>
                                   </select>
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">

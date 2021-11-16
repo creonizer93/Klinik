@@ -25,11 +25,15 @@
                             <div class="col-sm-4 mb-3 mb-sm-0">
                                 <select class="form-control " name="sediaan" placeholder="Bentuk Sediaan">
                                       <option value="" selected disabled>Sediaan Obat</option>
-                                      <option value="Tablet">Tablet</option>
-                                      <option value="Kapsul">Kapsul</option>
-                                      <option value="Syrup">Syrup</option>
                                       <option value="Ampul">Ampul</option>
-                                      <option value="Flask">Flask</option>
+                                      <option value="Botol">Botol</option>
+                                      <option value="Kotak">Kotak</option>
+                                      <option value="Pcs">Pcs</option>
+                                      <option value="Set">Set</option>
+                                      <option value="Strip">Strip</option>
+                                      <option value="Tablet">Tablet</option>
+                                      <option value="Tube">Tube</option>
+                                      <option value="Vial">Vial</option>
                                   </select>
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">

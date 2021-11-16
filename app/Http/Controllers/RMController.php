@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\MessageBag;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
+use App\rm;
+use App\Pasien;
 
 
 
@@ -514,10 +517,8 @@ class RMController extends Controller
     {
 
         $rms = ambil_filterdata('rm');
-
         $metadatas = ambil_satudata('metadata',19);
-        
-        return view('antri', compact('rms','metadatas',));
+        return view('antri', compact('rms','metadatas'));
 
     }
 

@@ -8,7 +8,7 @@
   @endsection
 @endforeach
 @section('konten')
-
+<!-- Bootstrap CSS -->
   <!--Modal Konfirmasi Delete-->
   <div id="DeleteModal" class="modal fade text-danger" role="dialog">
     <div class="modal-dialog modal-dialog modal-dialog-centered ">
