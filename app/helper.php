@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Schema;
     
     function ambil_semuadata($tabel) {
         if (Schema::hasColumn($tabel,'deleted')) {
-            $data = DB::table($tabel)->orderBy('id', 'desc')->where('deleted','<>',1)->get();
+            $data = DB::table($tabel)->orderBy('id', 'desc')->where('deleted','=',0)->get();
         }
         else {
             $data = DB::table($tabel)->orderBy('id', 'desc')->get();     
@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Schema;
     
     function ambil_satudata($tabel,$id) {
          if (Schema::hasColumn($tabel,'deleted')) {
-            $data = DB::table($tabel)->where('id',$id)->where('deleted','<>',1)->get();
+            $data = DB::table($tabel)->where('id',$id)->where('deleted','=',0)->get();
          }
          else {
              $data = DB::table($tabel)->where('id',$id)->get();
@@ -54,7 +54,7 @@ use Illuminate\Support\Facades\Schema;
     }
     function ambil_filterdata($tabel) {
         if (Schema::hasColumn($tabel,'visit')) {
-            $data = DB::table($tabel)->orderBy('id', 'desc')->where('visit','=',1)->get();
+            $data = DB::table($tabel)->where('visit','=',1)->orderBy('updated_time', 'desc')->get();
         }
         // else {
         //     $data = DB::table($tabel)->orderBy('id', 'desc')->get();     

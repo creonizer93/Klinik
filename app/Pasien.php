@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pasien extends Model
 {
-    public function rmx(){
-    	return $this->hasMany('App\rm');
+    protected $table = 'rm';
+    public function rm(){
+    	return $this->hasMany(rm::class);
     }
 }

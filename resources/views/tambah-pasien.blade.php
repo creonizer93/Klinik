@@ -26,21 +26,27 @@
             <div class="col-sm-3 mb-3 mb-sm-0">
               <input type="text" class="form-control " name="Umur" placeholder="Umur">
             </div>
-  
+
           </div>
           <div class="form-group">
             <input type="text" class="form-control " name="Alamat" placeholder="Alamat" required>
           </div>
           <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="col-sm-3 mb-3 mb-sm-0">
               <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan (Tidak Wajib)">
             </div>
-            <div class="col-sm-6">
-              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone" >
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone">
             </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="col-sm-2 mb-3 mb-sm-0">
+              <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin " required>
+                <option value="" selected disabled>Jenis Kelamin</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="perempuan">Perempuan</option>
+
+              </select>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
               <select class="form-control " name="Pendidikan_terakhir" placeholder="Pendidikan terakhir (Tidak Wajib)">
                 <option value="" selected disabled>Pendidikan Terakhir (Tidak Wajib)</option>
                 <option value="Tidak Ssekolah">Tidak Sekolah</option>
@@ -50,20 +56,19 @@
                 <option value="Perguruan Tinggi">Perguruan Tinggi</option>
               </select>
             </div>
-            <div class="col-sm-6">
-              <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin " required>
-                <option value="" selected disabled>Jenis Kelamin</option>
-                <option value="Laki-laki">Laki-laki</option>
-                <option value="perempuan">Perempuan</option>
+          </div>
+          <div class="form-group row">
 
-              </select>
-            </div>
+
           </div>
           <div class="form-group">
             <input type="text" class="form-control " name="no_bpjs" placeholder="Nomer BPJS (Tidak Wajib)">
           </div>
           <div class="form-group">
             <textarea class="form-control " name="alergi" placeholder="Daftar Alergi (Tidak Wajib)"></textarea>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control " name="riwayat" placeholder="Riwayat Penyakit (Tidak Wajib)"></textarea>
           </div>
           <div class="form-group row">
 

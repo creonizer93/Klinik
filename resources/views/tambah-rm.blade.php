@@ -10,6 +10,7 @@
 @section('konten')
   <div class="card shadow mb-4">
 
+
     <!-- Card Header - Accordion -->
     <a href="#PilihPasien" class="d-block card-header py-3 {{ $cont['col'] }}" data-toggle="collapse" role="button"
       aria-expanded="{{ $cont['aria'] }}" aria-controls="PilihPasien">
@@ -202,7 +203,7 @@
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
 
-              <select class="form-control " id="penunjang" name="penunjang">
+              <select class="selectpicker form-control" data-live-search="true" id="penunjang" name="penunjang">
                 <option value="" selected disabled>Pilih satu</option>
                 @foreach ($labs as $lab)
                   <option satuan="{{ $lab->satuan }}" value="{{ $lab->id }}">{{ $lab->nama }}</option>
@@ -231,9 +232,9 @@
               <label for="reseplist">Resep</label>
             </div>
           </div>
-          <div class="form-group row">
+          <div class="selectform-group row">
             <div class="col-sm-9 mb-0 mb-sm-0">
-              <select class="form-control " name="reseplist" id="reseplist"
+              <select class="form-control selectpicker" data-live-search="true" name="reseplist" id="reseplist"
                 {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }}>
                 <option value="" selected disabled>Pilih satu</option>
                 @foreach ($obats as $obat)

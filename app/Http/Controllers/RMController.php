@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\MessageBag;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
-use App\rm;
 use App\Pasien;
+use App\Rm;
 
 
 
@@ -56,7 +55,7 @@ class RMController extends Controller
     public function update_rm(Request $request)
 
     {
-DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
+ DB::table('pasien')->where('id',$request->idpasien)->update([ 'visit' => 0]);
        
        // Decoding array input pemeriksaan lab
 
@@ -125,13 +124,12 @@ DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
 
             'dokter' => $request->dokter,
                     
-            'created_time' => Carbon::now(),
+            // 'created_time' => Carbon::now(),
 
             'updated_time' => Carbon::now(),
 
             //  'visit' => 0,
         ]);
-
         $ids= DB::table('rm')->latest('created_time')->first(); 
 
             switch($request->simpan) {
@@ -161,9 +159,6 @@ DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
                 break;
 
             }
-
-       
-
          return redirect($buka)->with('pesan',$pesan);  
 
        }
@@ -426,7 +421,7 @@ DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
 
         }
 
-        $rms = DB::table('rm')->where('idpasien',$idpasien)->get();
+        $rms = DB::table('rm')->where('idpasien',$idpasien)->where('deleted' ,0)->get();
 
 
 
@@ -497,22 +492,30 @@ DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
 
 
     public function antri_rm()
-
     {
-        $rms = ambil_filterdata('rm');
-        $metadatas = ambil_satudata('metadata',19);
-        return view('antri', compact('rms','metadatas'));
-    }
+           $metadatas = ambil_satudata('metadata',19);
 
-    
+        $pasiens =  DB::table('pasien')->where('visit','=',1)->orderByDesc('nama')->get();
+
+
+
+        $cont=[
+
+          'aria'=>'true',
+
+          'show'=>'show',
+
+          'col'=>''  
+
+        ];
+
+        return view('antri',compact('metadatas','pasiens','cont')); 
+}  
 
     public function simpan_rm(Request $request)
 
     {  
-
-
-
-        $this->validate($request, [
+       $this->validate($request, [
 
             'idpasien' => 'required|numeric|digits_between:1,4',
 
@@ -656,10 +659,11 @@ DB::table('rm')->where('id',$request->id)->update([ 'visit' => 0]);
 
             'updated_time' => Carbon::now(),
 
-            'visit' => 1,
-
         ]);
-          
+          DB::table('pasien')->where('id',$request->idpasien)->update([ 
+              'visit' => 1,
+              'updated_time' => Carbon::now()
+          ]);
 
            $ids= DB::table('rm')->latest('created_time')->first();         
 

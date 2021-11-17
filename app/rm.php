@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class rm extends Model
 {
+    protected $table = 'pasien';
     public function pasien(){
-    	return $this->belongsTo(Pasien::class, 'idpasien');
+    	return $this->belongsTo(rm::class, 'idpasien');
     }
 }

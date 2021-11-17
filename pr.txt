@@ -1,4 +1,4 @@
-antrian, norm,nama, umur, alamat, cek fisik td hr
+antrian, norm,nama, umur, alamat, cek fisik td hr -> diganti jadi antrian pasien aja
 sediakan search
 daftar antrian pasien
 search OBAT

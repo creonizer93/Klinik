@@ -181,7 +181,8 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                <select num="{{ $num['lab'] }}" class="form-control " id="penunjang" name="penunjang">
+                <select num="{{ $num['lab'] }}" class="form-control selectpicker" data-live-search="true"
+                  id="penunjang" name="penunjang">
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($labs as $lab)
                     <option satuan="{{ $lab->satuan }}" value="{{ $lab->id }}">{{ $lab->nama }}</option>
@@ -233,7 +234,7 @@
             <div class="form-group row">
               <div class="col-sm-9 mb-0 mb-sm-0">
                 <select {{ Auth::user()->profesi !== 'Dokter' ? 'disabled="true"' : '' }} num="{{ $num['resep'] }}"
-                  class="form-control " name="reseplist" id="reseplist">
+                  class="form-control selectpicker" data-live-search="true" name="reseplist" id="reseplist">
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($obats as $obat)
                     <option value="{{ $obat->id }}">{{ $obat->nama_obat }} {{ $obat->sediaan }}

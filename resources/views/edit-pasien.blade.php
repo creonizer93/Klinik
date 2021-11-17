@@ -8,7 +8,7 @@
   @endsection
 @endforeach
 @section('konten')
-<!-- Bootstrap CSS -->
+  <!-- Bootstrap CSS -->
   <!--Modal Konfirmasi Delete-->
   <div id="DeleteModal" class="modal fade text-danger" role="dialog">
     <div class="modal-dialog modal-dialog modal-dialog-centered ">
@@ -55,11 +55,10 @@
           <form class="user" action="{{ route('pasien.update') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ $data->id }}">
-            
+
             <div class="form-group row">
               <div class="col-sm-3 mb-3 mb-sm-0">
-                <input type="text" class="form-control " name="KTP" placeholder="No KTP"
-                  value="{{ $data->ktp }}">
+                <input type="text" class="form-control " name="KTP" placeholder="No KTP" value="{{ $data->ktp }}">
               </div>
               <div class="col-sm mb-3 mb-sm-0">
                 <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap"
@@ -73,17 +72,22 @@
               <input type="text" class="form-control " name="Alamat" placeholder="Alamat" value="{{ $data->alamat }}">
             </div>
             <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="col-sm-3 mb-3 mb-sm-0">
                 <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan"
                   value="{{ $data->pekerjaan }}">
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-3 mb-3 mb-sm-0">
                 <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone"
                   value="{{ $data->hp }}">
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">
+              <div class="col-sm-2 mb-3 mb-sm-0">
+                <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin">
+                  <option value="" {{ $data->jk == '' ? 'selected' : '' }} disabled>Jenis Kelamin</option>
+                  <option value="Laki-laki" {{ $data->jk == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                  <option value="Perempuan" {{ $data->jk == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                </select>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
                 <select class="form-control " name="Pendidikan_terakhir" placeholder="Pendidikan terakhir"
                   value="{{ $data->pendidikan }}">
                   <option value="" {{ $data->pendidikan == '' ? 'selected' : '' }} disabled>Pendidikan Terakhir
@@ -97,14 +101,7 @@
                     Perguruan Tinggi</option>
                 </select>
               </div>
-              <div class="col-sm-6">
-                <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin">
-                  <option value="" {{ $data->jk == '' ? 'selected' : '' }} disabled>Jenis Kelamin</option>
-                  <option value="Laki-laki" {{ $data->jk == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                  <option value="Perempuan" {{ $data->jk == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
 
-                </select>
-              </div>
             </div>
             <div class="form-group">
               <input type="text" class="form-control " name="no_bpjs" placeholder="Nomer BPJS (Tidak Wajib)"
@@ -113,6 +110,10 @@
             <div class="form-group">
               <textarea class="form-control " name="alergi"
                 placeholder="Daftar Alergi (Tidak Wajib)">{{ $data->alergi }}</textarea>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control " name="riwayat"
+                placeholder="Daftar Alergi (Tidak Wajib)">{{ $data->riwayat_penyakit }}</textarea>
             </div>
             <div class="form-group row">
 

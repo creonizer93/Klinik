@@ -102,6 +102,7 @@ class PasienController extends Controller
             'no_bpjs' => $request->no_bpjs,
 
             'alergi' => $request ->alergi,
+            'riwayat_penyakit' => $request ->riwayat,
 
             'created_time' => Carbon::now(),
 
@@ -174,6 +175,7 @@ class PasienController extends Controller
                 'no_bpjs' => $request->no_bpjs,
 
                 'alergi' => $request ->alergi,
+                'riwayat_penyakit' => $request ->riwayat,
 
                 'updated_time' => Carbon::now(),
 
