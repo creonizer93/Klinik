@@ -238,7 +238,7 @@
                   <option value="" selected disabled>Pilih satu</option>
                   @foreach ($obats as $obat)
                     <option value="{{ $obat->id }}">{{ $obat->nama_obat }} {{ $obat->sediaan }}
-                      {{ $obat->dosis }}{{ $obat->satuan }}</option>
+                      {{ $obat->dosis }}</option>
                   @endforeach
                 </select>
               </div>
@@ -256,7 +256,7 @@
                         <td><input type="hidden" name="resep[{{ $i }}][id]"
                             value="{{ array_keys($data->allresep)[$i] }}" class="form-control" readonly></td>
                         <td width="30%"><input type="text" name="resep[{{ $i }}][nama]"
-                            value="{{ get_value('obat', array_keys($data->allresep)[$i], 'nama_obat') }} {{ get_value('obat', array_keys($data->allresep)[$i], 'sediaan') }} {{ get_value('obat', array_keys($data->allresep)[$i], 'dosis') }} {{ get_value('obat', array_keys($data->allresep)[$i], 'satuan') }}"
+                            value="{{ get_value('obat', array_keys($data->allresep)[$i], 'nama_obat') }} {{ get_value('obat', array_keys($data->allresep)[$i], 'sediaan') }} {{ get_value('obat', array_keys($data->allresep)[$i], 'dosis') }}"
                             class="form-control" readonly></td>
                         <td width="10%"><input type="text" name="resep[{{ $i }}][jumlah]"
                             value="{{ $data->jum[$i] }}" placeholder="Jumlah" class="form-control" required></td>

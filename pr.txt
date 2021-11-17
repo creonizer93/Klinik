@@ -1,5 +1,14 @@
-antrian, norm,nama, umur, alamat, cek fisik td hr -> diganti jadi antrian pasien aja
-sediakan search
-daftar antrian pasien
-search OBAT
-data pasien, tambah riwayat penyakit
+ganti logo,
+diskon 50%
+
+
+Upload all your laravel files (as it is) from localhost to /htdocs - it is better to create a subfolder under /htdocs to better manage the project.
+Export phpMyAdmin DB and import to infinity DB. Should obtain all the credentials needed to set the DB credentials in .env file.
+Update the DB settings in .env file.
+Create a .htaccess file at /htdocs folder. see e.g. file
+< IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule (.*) /your_subfolder/public/$1 [L]
+< /IfModule>
+The shared host server therefore is quite friendly to Laravel deployment and this is a top-class server configuration, different from other hosting providers.
+Due to lack of SSH, one may face laravel specific error but this is not a big issue if one is familiar with Laravel.

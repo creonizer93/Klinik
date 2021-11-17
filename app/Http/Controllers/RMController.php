@@ -523,26 +523,6 @@ class RMController extends Controller
 
             'anamnesis' => 'required|max:1000',
 
-            'px_fisik' => 'max:1000',
-
-            'diagnosis' => 'max:40',
-
-            'dokter' => 'required',
-
-            'sistolik2' =>'required',
-
-            'diastolik2' =>'required',
-
-            'hr2' =>'required',
-
-            'bb2' =>'required',
-
-            'tb2' =>'required',
-
-            'rr2' =>'required',
-
-
-
         ]);
 
        // Decoding array input pemeriksaan lab

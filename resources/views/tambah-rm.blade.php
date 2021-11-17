@@ -239,7 +239,7 @@
                 <option value="" selected disabled>Pilih satu</option>
                 @foreach ($obats as $obat)
                   <option value="{{ $obat->id }}">{{ $obat->nama_obat }} {{ $obat->sediaan }}
-                    {{ $obat->dosis }}{{ $obat->satuan }}</option>
+                    {{ $obat->dosis }}</option>
                 @endforeach
               </select>
             </div>

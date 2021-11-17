@@ -17,36 +17,36 @@
         <form class="user" action="{{ route('pasien.simpan') }}" method="post">
           {{ csrf_field() }}
           <div class="form-group row">
-            <div class="col-sm-3 mb-3 mb-sm-0">
-              <input type="text" class="form-control " name="KTP" placeholder="No KTP">
-            </div>
-            <div class="col-sm-6 mb-3 mb-sm-0">
-              <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap" required>
-            </div>
-            <div class="col-sm-3 mb-3 mb-sm-0">
-              <input type="text" class="form-control " name="Umur" placeholder="Umur">
-            </div>
 
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control " name="Alamat" placeholder="Alamat" required>
-          </div>
-          <div class="form-group row">
-            <div class="col-sm-3 mb-3 mb-sm-0">
-              <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan (Tidak Wajib)">
-            </div>
-            <div class="col-sm-3 mb-3 mb-sm-0">
-              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="Nama_Lengkap" placeholder="Nama Lengkap" required>
             </div>
             <div class="col-sm-2 mb-3 mb-sm-0">
               <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin " required>
                 <option value="" selected disabled>Jenis Kelamin</option>
                 <option value="Laki-laki">Laki-laki</option>
                 <option value="perempuan">Perempuan</option>
-
               </select>
             </div>
+            <div class="col-sm-2 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="Umur" placeholder="Umur">
+            </div>
             <div class="col-sm-4 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="Alamat" placeholder="Alamat" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="KTP" placeholder="No KTP">
+            </div>
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="Pekerjaan" placeholder="Pekerjaan (Tidak Wajib)">
+            </div>
+            <div class="col-sm-3 mb-3 mb-sm-0">
+              <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone">
+            </div>
+
+            <div class="col-sm-3 mb-3 mb-sm-0">
               <select class="form-control " name="Pendidikan_terakhir" placeholder="Pendidikan terakhir (Tidak Wajib)">
                 <option value="" selected disabled>Pendidikan Terakhir (Tidak Wajib)</option>
                 <option value="Tidak Ssekolah">Tidak Sekolah</option>

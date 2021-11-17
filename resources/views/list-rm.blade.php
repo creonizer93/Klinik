@@ -197,6 +197,10 @@
     $(document).ready(function() {
       var table = $('#pasien').DataTable({
         pageLength: 10,
+        //sorting datatables
+        order: [
+          [0, 'desc']
+        ],
         lengthMenu: [
           [5, 10, 20, -1],
           [5, 10, 20, 'Todos']
